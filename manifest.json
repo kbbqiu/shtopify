@@ -1,0 +1,65 @@
+{
+  "manifest_version": 2,
+
+  "name": "Drunk Shtopper",
+  "short_name": "Drunk Shtopper",
+  "description": "Prevents accidental purchases while inebriated",
+  "version": "1.0.0",
+
+  "options_ui": {
+    "page": "options.html"
+  },
+
+  "browser_action": {
+     "default_popup": "popup.html"
+  },
+
+  "permissions": [
+    "tabs", "<all_urls>",
+    "storage",
+    "*://*.amazon.com/*",
+    "*://*.amazon.es/*",
+    "*://*.amazon.in/*",
+    "*://*.amazon.co.jp/*",
+    "*://*.amazon.fr/*",
+    "*://*.amazon.de/*",
+    "*://*.amazon.it/*",
+    "*://*.amazon.nl/*",
+    "*://*.amazon.co.uk/*",
+    "*://*.amazon.ca/*",
+    "*://*.amazon.com.mx/*",
+    "*://*.amazon.com.au/*",
+    "*://*.amazon.com.br/*",
+    "*://*.goodreads.com/*"
+  ],
+
+
+  "icons": {
+    "128": "images/default-128.png",
+    "48": "images/default-48.png",
+    "24": "images/default-24.png"
+  },
+  "content_scripts": [{
+    "matches": [
+      "*://*.amazon.com/*",
+      "*://*.amazon.es/*",
+      "*://*.amazon.in/*",
+      "*://*.amazon.co.jp/*",
+      "*://*.amazon.fr/*",
+      "*://*.amazon.de/*",
+      "*://*.amazon.it/*",
+      "*://*.amazon.nl/*",
+      "*://*.amazon.co.uk/*",
+      "*://*.amazon.ca/*",
+      "*://*.amazon.com.mx/*",
+      "*://*.amazon.com.au/*",
+      "*://*.amazon.com.br/*"
+    ],
+    "js": [
+      "content.js"
+    ]
+  }]
+  // , "web_accessible_resources": [
+  //   "content.css"
+  // ]
+}
