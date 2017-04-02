@@ -7,19 +7,16 @@ function removeBuy() {
   }
 }
 
-chrome.storage.sync.get(['startTime', 'endTime', 'disappear'], function(item) {
+chrome.storage.sync.get(['startTime', 'endTime', 'disappear'], function (item) {
   var intervals = 0;
   let storage = item;
-  const time =  new Date();
+  const time = new Date();
   console.log(storage);
   if (storage.disappear === 'true') {
 
-    if(time.getHours() >= Number(storage.startTime) || time.getsHours() <= Number(storage.endTime)) {
-      removeBuy();
-      removeBuy();
-      removeBuy();
-      removeBuy();
-      removeBuy();
+    if (time.getHours() >= Number(storage.startTime) || time.getsHours() <= Number(storage.endTime)) {
+
+      // runs an interval to counter amazon anti web scrapping tools
       var buttonChecker = window.setInterval(function () {
         intervals++;
         // Check for one click buttons on page and hide them
@@ -28,7 +25,7 @@ chrome.storage.sync.get(['startTime', 'endTime', 'disappear'], function(item) {
         if (intervals > 5) {
           window.clearInterval(buttonChecker);
         }
-      }, 500);
+      }, 300);
     }
   }
 });
